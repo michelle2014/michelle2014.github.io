@@ -7,6 +7,8 @@ This is a project collection of CS50 courses and my own practice.
 Here is the project list and languages as well as libraries and frameworks involved: 
 
 * GitHub Pages (HTML, CSS) for my own resume, to be continually modified
+* Currency Exchange (HTML, JavaScript, API)
+* Advanced CSS (HTML, CSS, JavaScript, SCSS) *to be finished*
 * Mario/Cash (C)
 * Caesar/Vigenère (C)
 * Resize (C)
@@ -19,6 +21,6 @@ Here is the project list and languages as well as libraries and frameworks invol
 * Google Search (HTML, CSS)
 * Wiki (Python, Django)
 * Commerce (Python, Django) *to be finished*
-
+* Mail (HTML, CSS, JavaScript, Python, Django, API) *to be finished*
 
 *To be continued...*
