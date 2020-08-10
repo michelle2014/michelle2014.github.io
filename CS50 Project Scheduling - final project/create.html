@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create
+{% endblock %}
+
+{% block main %}
+    <form class="createForm" action="/create" method="post">
+        <div class="container">
+            <div class="row createRow">
+                <div class="col-4">
+                    <div class="form-group">
+                        <textarea id="projectName" class="form-control" name="name" placeholder="Project Name"></textarea>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <p>Start Date: <input type="text" name="datepicker1" class="datepicker" id="date1"></p>
+                </div>
+                <div class="col-4">
+                    <p>Due Date: <input type="text" name="datepicker2" class="datepicker" id="date2"></p>
+                </div>
+            </div>
+            <hr>
+            <div class="row createRow">
+                <div class="col-4">
+                    <div class="form-group">
+                        <select class="form-control" name="team">
+                            <option disabled selected value="">TEAM NAME</option>
+                            {% for team in teams %}
+                            <option value="team1">{{ team.teamname }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <select class="form-control" name="lead">
+                            <option disabled selected value="">Lead Name</option>
+                            <option value="michelle">Michelle</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <select class="form-control" name="status">
+                        <option disabled selected value="">Status</option>
+                        <option value="notstarted">Not Started</option>
+                        <option value="inprogress">In Progress</option>
+                        <option value="onhold">On Hold</option>
+                        <option value="cancelled">Cancelled</option>
+                        <option value="completed">Completed</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="row createRow">
+                <div class="form-group">
+                    <p id="technology" name="technology">Technlogy:
+			            <input class="create-technology" name="technology" value="python" type="checkbox"><label for="python">Python</label>
+			            <input class="create-technology" name="technology" value="c" type="checkbox"><label for="c">C</label>
+			            <input class="create-technology" name="technology" value="html" type="checkbox"><label for="html">HTML</label>
+			            <input class="create-technology" name="technology" value="css" type="checkbox"><label for="css">CSS</label>
+			            <input class="create-technology" name="technology" value="javascript" type="checkbox"><label for="javascript">JavaScript</label>
+			            <input class="create-technology" name="technology" value="mysql" type="checkbox"><label for="mysql">MySQL</label>
+			            <input class="create-technology" name="technology" value="C++" type="checkbox"><label for="c++">C++</label>
+			            <input class="create-technology" name="technology" value="Java" type="checkbox"><label for="java">C</label>
+			            <input class="create-technology" name="technology" value="Node.js" type="checkbox"><label for="node.js">Node.js</label>
+			            <input class="create-technology" name="technology" value="azure" type="checkbox"><label for="azure">Azure</label>
+			            <input class="create-technology" name="technology" value="angular" type="checkbox"><label for="angular">Angular</label>
+			            <input class="create-technology" name="technology" value=".Net" type="checkbox"><label for=".net">.Net</label>
+		            </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row createRow">
+                <div class="col-10">
+                    <div class="form-group">
+                        <textarea id="memo" class="form-control" name="memo" placeholder="Memo"></textarea>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-primary" type="submit">Create</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        // Check if project name input
+        $('form').on('submit',function(event) {
+            if (!$('textarea').val()) {
+                alert('Project name is not available');
+			    return false;
+            }
+            $.get('/projectcheck?name=' + $('textarea').val(), function(data) {
+                if (data == false) {
+                    alert("Project name is not available");
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Invite
+{% endblock %}
+
+{% block main %}
+    <form class="invite" action="/invite" method="post">
+        <div id="invite" class="container" action>
+            <div class="row">
+                <div class="col-4" style="border-right:1px solid #E8E8E8;height:500px">
+                    <div class="form-group">
+                        <select id="teamSelect" class="form-control" name="team">
+                            <option disabled selected value="">TEAM NAME</option>
+                            <option value="team1">TEAM NAME 1</option>
+                            <option value="team2">TEAM NAME 2</option>
+                            <option value="team3">TEAM NAME 3</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p><input class="roleSelect" name="architect" value="username"> AS ARCHITECT</p>
+                        <p><input class="roleSelect" name="frontend" value="username"> AS FRONTEND</p>
+                        <p><input class="roleSelect" name="backend" value="username"> AS BACKEND</p>
+                        <p><input class="roleSelect" name="tester" value="username"> AS TESTER</p>
+                        <p><input class="roleSelect" name="database" value="username"> AS DATABASE</p>
+                        <p><input class="roleSelect" name="devops" value="username"> AS DEVOPS</p>
+                        <p><input class="roleSelect" name="mobile" value="username"> AS MOBILE</p>
+		                <button id="teamButton" type="submit">ADD TO TEAM</button>
+		            </div>
+                </div>
+                <div class="col-4" style="border-right:1px solid #E8E8E8;height:500px">
+                    <div class="form-group">
+                        <select id="teamSelect" class="form-control" name="team">
+                            <option disabled selected value="">TEAM NAME</option>
+                            <option value="team1">TEAM NAME 1</option>
+                            <option value="team2">TEAM NAME 2</option>
+                            <option value="team3">TEAM NAME 3</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p><input class="roleSelect" name="architect" value="username"> AS ARCHITECT</p>
+                        <p><input class="roleSelect" name="frontend" value="username"> AS FRONTEND</p>
+                        <p><input class="roleSelect" name="backend" value="username"> AS BACKEND</p>
+                        <p><input class="roleSelect" name="tester" value="username"> AS TESTER</p>
+                        <p><input class="roleSelect" name="database" value="username"> AS DATABASE</p>
+                        <p><input class="roleSelect" name="devops" value="username"> AS DEVOPS</p>
+                        <p><input class="roleSelect" name="mobile" value="username"> AS MOBILE</p>
+		                <button id="teamButton" type="submit">ADD TO TEAM</button>
+		            </div>
+                </div>
+                <div class="col-4" style="border-right:1px solid #E8E8E8;height:500px">
+                    <div class="form-group">
+                        <select id="teamSelect" class="form-control" name="team">
+                            <option disabled selected value="">TEAM NAME</option>
+                            <option value="team1">TEAM NAME 1</option>
+                            <option value="team2">TEAM NAME 2</option>
+                            <option value="team3">TEAM NAME 3</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p><input class="roleSelect" name="architect" value="username"> AS ARCHITECT</p>
+                        <p><input class="roleSelect" name="frontend" value="username"> AS FRONTEND</p>
+                        <p><input class="roleSelect" name="backend" value="username"> AS BACKEND</p>
+                        <p><input class="roleSelect" name="teste" value="username"> AS TESTER</p>
+                        <p><input class="roleSelect" name="database" value="username"> AS DATABASE</p>
+                        <p><input class="roleSelect" name="devops" value="username"> AS DEVOPS</p>
+                        <p><input class="roleSelect" name="mobile" value="username"> AS MOBILE</p>
+		                <button id="teamButton" type="submit">ADD TO TEAM</button>
+		            </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

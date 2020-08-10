@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                {% for key, value in data.items() %}
+				    {% if value is string %}
+					    ['{{ key }}', '{{ value }}'],
+				    {% else %}
+					    ['{{ key }}', {{ value }}],
+				    {% endif %}
+			    {% endfor %}
+            ]);
+
+            var options = {
+                title: 'Projects'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+    <div class="container" id="statistics">
+        <div class="row indexRow">
+            <div class="col-6">
+                <div class="form-group"></div>
+            </div>
+            <div class="col-3">
+                <p class="dateIndicator">Start Date</p><i class="far fa-calendar-alt"></i><input type="text" name="datepicker3" class="datepicker" id="date3">
+            </div>
+            <div class="col-3">
+                <p class="dateIndicator">Due Date</p><i class="far fa-calendar-alt"></i><input type="text" name="datepicker4" class="datepicker" id="date4">
+            </div>
+        </div>
+        <div class="row indexRow" id="pieChart">
+            <div class="col-7">
+                <div id="piechart" style="width: 700px; height: 320px;"></div>
+            </div>
+            <div class="col-5">
+                <div>
+                    <table id="statisticsTable">
+                        <caption>Projects</caption>
+                        <tr>
+                            <td align="left">Total Created Projects</td>
+                            <td class="number">{{ totalProjects }}</td>
+                            <td class="percent">({{ (totalProjects/totalProjects*100) }}%)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">In Progress</td>
+                            <td value="totalInProgress" id="totalInProgress" class="number">{{ totalInProgress }}</td>
+                            <td class="percent">({{ (totalInProgress/totalProjects*100) }}%)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Not Started</td>
+                            <td class="number">{{ totalNotStarted }}</td>
+                            <td class="percent">({{ (totalNotStarted/totalProjects*100) }}%)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">On Hold</td>
+                            <td class="number">{{ totalOnHold }}</td>
+                            <td class="percent">({{ (totalOnHold/totalProjects*100) }}%)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Cancelled</td>
+                            <td class="number">{{ totalCancelled }}</td>
+                            <td class="percent">({{ (totalCancelled/totalProjects*100) }}%)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Completed</td>
+                            <td class="number">{{ totalCompleted }}</td>
+                            <td class="percent">({{ (totalCompleted/totalProjects*100) }}%)</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Overdue</td>
+                            <td class="number">{{ totalOverdue }}</td>
+                            <td class="percent">({{ (totalOverdue/totalProjects*100) }}%)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div>
+            <table id="overview">
+                <caption>Overview of projects by user</caption>
+
+                <tr class="overview">
+                    <td>Name</td>
+                    <td>Projects</td>
+                    <td>Not Started</td>
+                    <td>In Progress</td>
+                    <td>On Hold</td>
+                    <td>Cancelled</td>
+                    <td>Completed</td>
+                </tr>
+
+                {% for user in users %}
+                <tr class="overview">
+                    <td>{{ user.username }}</td>
+                    <td>{{ numberProjects }}</td>
+                    <td>{{ numberNotStarted }}</td>
+                    <td>{{ numberInProgress }}</td>
+                    <td>{{ numberOnHold }}</td>
+                    <td>{{ numberCancelled }}</td>
+                    <td>{{ numberCompleted }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

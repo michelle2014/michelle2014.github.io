@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create A Meeting
+{% endblock %}
+
+{% block main %}
+    <form class="createForm" action="/createmeetings" method="post">
+        <div class="container">
+            <div class="row createRow">
+                <div class="col-4">
+                    <div class="form-group">
+                        <textarea class="form-control" name="title" placeholder="Meeting Title"></textarea>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <p>Date: <input type="text" name="date"></p>
+                </div>
+                <div class="col-4">
+                    <p>Time: <input type="text" name="time"></p>
+                </div>
+            </div>
+            <hr>
+            <div class="row createRow">
+                <div class="col-4">
+                    <div class="form-group">
+                        <p>Location: <input type="text" name="location"></p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <select class="form-control" name="organizer">
+                            <option disabled selected value="">Organizer</option>
+                            <option value="michelle">Michelle</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <select class="form-control" name="status">
+                        <option disabled selected value="">Status</option>
+                        <option value="accepted">Accepted</option>
+                        <option value="pending">Pending</option>
+                        <option value="declined">Declined</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="row createRow">
+                <div class="col-10">
+                    <div class="form-group">
+                        <textarea class="form-control" name="memo" placeholder="Memo"></textarea>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-primary" type="submit">Create</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        // Check if meeting name input
+        $('form').on('submit',function(event) {
+            if (!$('textarea').val()) {
+                alert('Meeting title is not available');
+			    return false;
+            }
+            $.get('/titlecheck?name=' + $('textarea').val(), function(data) {
+                if (data == false) {
+                    alert("Meeting title is not available");
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+{% endblock %}

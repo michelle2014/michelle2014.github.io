@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+	<h1 class="mb-3">Form</h1>
+
+	<!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+	<form action="/form" method="post">
+
+		<div class="row">
+			<div class="col-first">
+				<input id="first-name" autocomplete="off" autofocus name="firstname" type="text" class="form-control" placeholder="First name">
+			</div>
+		<div class="col-second">
+				<input id="second-name" autocomplete="off" name="lastname" type="text" class="form-control" placeholder="Last name">
+			</div>
+		</div>
+
+		<p>
+			<select id="house" name="house">
+				<option disabled selected value="">House</option>
+				<option value="Gryffindor">Gryffindor</option>
+				<option value="Hufflepuff">Hufflepuff</option>
+				<option value="Ravenclaw">Ravenclaw</option>
+				<option value="Slytherin">Slytherin</option>
+			</select>
+		</p>
+
+		<p id="position">
+			<input class="form-position" name="position" value="Beater" type="radio"><label>Beater</label><br>
+			<input class="form-position" name="position" value="Chaser" type="radio"><label>Chaser</label><br>
+			<input class="form-position" name="position" value="Keeper" type="radio"><label>Keeper</label><br>
+			<input class="form-position" name="position" value="Seeker" type="radio"><label>Seeker</label><br>
+		</p>
+
+		<!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+		<p><button class="btn btn-primary" type="submit">Submit</button></p>
+
+    </form>
+
+
+    <script>
+
+        document.querySelector('form').onsubmit = function() {
+			if (!document.querySelector('#first-name').value) {
+				alert('You must provide your first name!');
+				return false;
+			}
+			else if (!document.querySelector('#second-name').value) {
+				alert('You must provide your last name!');
+				return false;
+			}
+			else if (!document.querySelector('select').value) {
+				alert('You must specify your house!');
+				return false;
+			}
+			else if (!document.querySelector('#position').value) {
+				alert('You must specify your position!');
+				return false;
+			}
+		}
+
+    </script>
+
+{% endblock %}

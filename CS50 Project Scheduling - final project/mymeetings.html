@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Meetings
+{% endblock %}
+
+{% block main %}
+    <div id="myMeetings" class="container table table-list" role="table">
+        <div class="row">
+            <div class="col-3">
+                <ul>
+                    <div id="faUsers"><i class="fas fa-users"></i><span>Upcoming Meetings</span></div>
+                    <div id="meetingItems">
+                        <li><a href="">Accepted Meetings</a></li>
+                        <li><a href="">Pending Meetings</a></li>
+                        <li><a href="">Declined Meetings</a></li>
+                    </div>
+                </ul>
+            </div>
+            <div class="col-4">
+                <ul>
+                    <div id="fa-calendar"><i class="far fa-calendar"></i><span>Schedule</span></div>
+                    <div>
+                        <a href="/createmeetings"><li id="newMeetings"><i class="fas fa-plus"></i>New Meetings</li></a>
+                        <a href=""><li id="recurring"><i class="fas fa-plus"></i>New Recurring Meetings</li></a>
+                    </div>
+                </ul>
+            </div>
+            <div class="col-2">
+                <p>Past Meetings</p>
+            </div>
+            <div class="col-3">
+                <p>Pending Approvals</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <p id="upcoming">Upcoming Meetings</p>
+            </div>
+            <div class="col-8">
+                <select>
+                    <option disabled selected value="">Upcoming Meetings</option>
+                    <option value="mymeetings">My Meetings</option>
+                    <option value="accepted">Accepted Meetings</option>
+                    <option value="pending">Pending Meetings</option>
+                    <option value="declined">Declined Meetings</option>
+                </select>
+                <i class="far fa-calendar-alt"></i><input type="text" name="datepicker5" class="datepicker" id="date5">
+            </div>
+        </div>
+        <div class="mymeetingsTable row">
+            <div>
+                <table id="example" class="table table-striped" style="width:100%">
+                    <tr>
+                        <td style="width:20%" class="meetingTitle">Meeting Title</td>
+                        <td style="width:3%" class="OrganizerCell">Organizer</td>
+                        <td style="width:20%" class="dateCell">Date</td>
+                        <td style="width:20%" class="timeCell">Time</td>
+                        <td style="width:3%" class="locationCell">Location</td>
+                        <td style="width:3%" class="statusCell">Status</td>
+                    </tr>
+                    {% for meeting in meetings %}
+                    <tr>
+                        <td style="width:20%" class="meetingTitle">{{ meeting.title }}</td>
+                        <td style="width:3%" class="OrganizerCell">{{ meeting.organizer }}</td>
+                        <td style="width:20%" class="dateCell">{{ meeting.date }}</td>
+                        <td style="width:20%" class="timeCell">{{ meeting.time }}</td>
+                        <td style="width:3%" class="locationCell">{{ meeting.location }}</td>
+                        <td style="width:3%" class="statusCell">{{ meeting.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- https://datatables.net/examples/styling/bootstrap4 -->
+    <form class="allprojects" action="allprojects" method="post">
+        <div id="projectTable" class="table table-list" role="table">
+            <h4 class="table-heading">ALL PROJECTS</h4>
+                <select name="options" id="allUsers">
+                    <option disabled selected value="">All Projects</option>
+                    <option value="notstarted">Not Started</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="onhold">On Hold</option>
+                    <option value="cancelled">Cancelled</option>
+                    <option value="completed">Completed</option>
+                    <option value="overdue">Overdue</option>
+                </select>
+                <button type="submit" value="enter">Enter</button>
+            <table id="example" class="table table-striped" style="width:100%">
+			    <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Project Name</th>
+                        <th>Technology</th>
+                        <th>Start Time</th>
+                        <th>Due Time</th>
+                        <th>Team</th>
+                        <th>Status</th>
+                    </tr>
+			    </thead>
+			    <tbody>
+                    {% for project in projects %}
+                    <tr>
+                        <td>{{ project.id }}</td>
+                        <td>{{ project.name }}</td>
+                        <td>{{ project.technology }}</td>
+                        <td>{{ project.start }}</td>
+                        <td>{{ project.due }}</td>
+                        <td>{{ project.team }}</td>
+                        <td>{{ project.status }}</td>
+                    </tr>
+                    {% endfor %}
+			    </tbody>
+		    </table>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,401 @@
+.nav-item,.nav-link
+{
+    /* font and color for nav */
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    color: OldLace;
+}
+
+#searchBox
+{
+    width: 100px;
+    height: 30px;
+    border-color: OldLace;
+}
+
+#icon, #searchButton, #selectButton
+{
+    /* search icon style */
+    background-color: lightSkyBlue;
+    color: OldLace;
+    font-size: 12px;
+}
+
+#selectButton
+{
+    margin-top: 5px;
+}
+
+a:hover
+{
+    /* no underline when hover over link */
+    text-decoration: none;
+}
+
+.navbar
+{
+    /* background color for nav */
+    background-color: lightSkyBlue;
+}
+
+#search
+{
+    /* position of search, options and logout in a line */
+    margin-left: 650px;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+
+#logout
+{
+    /* position of search, options and logout in a line */
+    margin-bottom: 5px;
+}
+
+#options
+{
+    /* font of dropdown menu in nav */
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    margin-top: 4px;
+    height: 30px;
+    border-color: OldLace;
+}
+
+.search
+{
+    /* search bar position and size */
+    position: relative;
+    padding: 5px 3px 5px 3px;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+#col2
+{
+    background-color: lightSkyBlue;
+    color: OldLace;
+    font-weight: bold;
+    text-align: left;
+    padding: 20px 3px 20px 10px;
+}
+
+a
+{
+    color: OldLace;
+}
+
+#create,#upload
+{
+    margin-bottom: 20px;
+    color: lightSkyBlue;
+    background-color: OldLace;
+    border-radius: 6px;
+}
+
+.userPlus
+{
+    background-color: lightSkyBlue;
+    border: none;
+    color: OldLace;
+}
+
+p i
+{
+    margin-right: 4px;
+}
+
+.login,.register,.createForm
+{
+    margin-top: 40px;
+}
+
+footer
+{
+    position: fixed;
+    bottom: 12px;
+    left: 45%;
+}
+
+.createRow
+{
+    margin-top: 30px;
+}
+
+#technology
+{
+    margin-left: 70px;
+}
+
+.create-technology
+{
+    margin-left: 20px;
+}
+
+#memo
+{
+    resize: both;
+}
+
+#projectName
+{
+    resize: horizontal;
+    margin-top: -15px;
+}
+
+#statistics
+{
+    margin-top: 15px;
+}
+
+#pieChart
+{
+    margin-top: 5px;
+}
+
+caption, #overview caption
+{
+    caption-side: top;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#overview
+{
+    margin-top: -20px;
+
+}
+
+.overview
+{
+    border-bottom: 1px solid lightgrey;
+    padding: 5px;
+    font-size: 14px;
+}
+
+#overview td
+{
+    padding: 5px 53px 5px 53px;
+}
+
+.dateIndicator
+{
+    margin-bottom: 0px;
+    text-align: left;
+    font-size: 15px;
+    margin-left: 40px;
+}
+
+#date3,#date4, #date5
+{
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+}
+
+.fa-calendar-alt
+{
+    margin-left: 20px;
+}
+
+#projectTable
+{
+    margin-top: 30px;
+}
+
+.sideLink
+{
+    color: OldLace;
+}
+
+#myMeetings
+{
+    margin-top: 30px;
+}
+
+#upcoming
+{
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#myMeetings select
+{
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom: 2px solid #E8E8E8;
+    padding-bottom: 3px;
+}
+
+.mymeetingsTable
+{
+    border: 1px solid lightgrey;
+    padding: 12px 12px 12px 12px;
+}
+
+#myMeetings li
+{
+    list-style: none;
+}
+
+#minutesDiv header, #minutesDiv main, #minutesDiv h2
+{
+    text-align: left;
+}
+
+header
+{
+    background-color: #E8E8E8;
+    margin-left: -16px;
+    margin-right: -17px;
+}
+
+#minutesDiv h1, #minutesDiv h2, #minutesDiv p
+{
+    padding: 10px 30px 10px 30px;
+    color: lightSkyBlue;
+}
+
+#minutesDiv span
+{
+    padding-right: 30px;
+}
+
+#document
+{
+    font-size: 50px;
+    color: #E8E8E8;
+    margin-left: 30px;
+}
+
+#myMeetings td
+{
+    padding: 5px 63px 5px 63px;
+}
+
+#allUsers
+{
+    margin-bottom: 10px;
+    margin-top: 15px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    margin-left: -55rem;
+}
+
+#statisticsTable caption
+{
+    caption-side: top;
+}
+
+#statisticsTable
+{
+    margin-top: 30px;
+}
+
+.number
+{
+    font-weight: bold;
+    padding-left: 60px;
+}
+
+.percent
+{
+    padding-left: 60px;
+}
+
+.add
+{
+    margin-left: -2em;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    padding-right: 55em;
+}
+
+#addNotes, #addProjects
+{
+    margin-bottom: -0.8em;
+}
+
+#arrowButton
+{
+    padding: 0;
+    border: 0;
+    background: 0;
+}
+
+.fa-chevron-right
+{
+    margin-right: 0.5em;
+    margin-left: 1em;
+    color: grey;
+}
+
+#faUsers
+{
+    margin-left: -5em;
+}
+
+.fa-users, .fa-calendar, .fa-plus
+{
+    margin-right: 0.5em;
+}
+
+#fa-calendar
+{
+    margin-left: -15em;
+}
+
+#newMeetings
+{
+    margin-left: -4.5em;
+}
+
+#meetingItems
+{
+    text-align: left;
+    margin-left: 3em;
+}
+
+.timeCell, .OrganizerCell, .meetingTitle, .locationCell, .statusCell, .dateCell
+{
+    display:inline-block
+}
+
+#invite
+{
+    margin-top: 40px;
+    text-align: left;
+}
+
+#teamSelect, .roleSelect, #teams
+{
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+}
+
+#teams
+{
+    margin-left: -50em;
+    margin-top: 40px;
+}

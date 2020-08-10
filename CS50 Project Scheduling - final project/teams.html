@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Teams
+{% endblock %}
+
+{% block main %}
+
+    <form class="teams" action="/teams" method="post">
+        <div class="container">
+            <div class="form-group">
+                <input id="teams" name="teamname" value="teamname">
+                <button id="createTeams" type="submit">ADD A TEAM</button>
+            </div>
+        </div>
+        <div id="teamsTable" class="table table-list" role="table">
+            <table id="example" class="table table-striped" style="width:100%">
+                <tr>
+                    <td class="team">TEAM</td>
+                    <td class="architect">ARCHITECT</td>
+                    <td class="frontend">FRONTEND</td>
+                    <td class="backend">BACKEND</td>
+                    <td class="tester">TESTER</td>
+                    <td class="database">DATABASE</td>
+                    <td class="devops">DEVOPS</td>
+                    <td class="mobile">MOBILE</td>
+                </tr>
+                {% for teammate in teammates %}
+                <tr>
+                    <td>{{ teammate.team }}</td>
+                    <td>{{ teammate.architect }}</td>
+                    <td>{{ teammate.frontend }}</td>
+                    <td>{{ teammate.backend }}</td>
+                    <td>{{ teammate.tester }}</td>
+                    <td>{{ teammate.database }}</td>
+                    <td>{{ teammate.devops }}</td>
+                    <td>{{ teammate.mobile }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <!-- https://datatables.net/examples/styling/bootstrap4 -->
+    <div class="" role="table">
+        <table id="example" class="table table-striped">
+			<thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Transacted</th>
+                </tr>
+			</thead>
+			<tbody>
+			    {% for stock in stocks %}
+			    <tr>
+                    <td>{{ stock.symbol }}</td>
+                    <td>{{ stock.shares }}</td>
+                    <td>{{ stock.price | usd }}</td>
+                    <td>{{ stock.time }}</td>
+                </tr>
+                {% endfor %}
+			</tbody>
+		</table>
+    </div>
+{% endblock %}

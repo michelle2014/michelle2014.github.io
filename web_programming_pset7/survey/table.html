@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- https://datatables.net/examples/styling/bootstrap4 -->
+    <div class="table table-list" role="table">
+        <h4 class="table-heading">Sheet</h4>
+        <table>
+			<thead>
+            <tr>
+                <th>Name</th>
+                <th>House</th>
+                <th>Position</th>
+            </tr>
+			</thead>
+			<tbody>
+            
+                <tr>
+                    <td>{{ student[0] }}</td>
+                    <td>{{ student[1] }}</td>
+					<td>{{ student[2] }}</td>
+                </tr>
+			</tbody>
+		</table>
+    </div>
+
+{% endblock %}

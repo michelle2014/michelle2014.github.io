@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Minutes
+{% endblock %}
+
+{% block main %}
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <div id="minutesDiv">
+        <header>
+            <h1>Project Portfolio Review</h1>
+            <p><span><i class="far fa-calendar"></i>Date</span><span><i class="far fa-clock"></i>Time</span><span><i class="fas fa-map-marker-alt"></i>Location</span></p>
+        </header>
+        <main>
+            <h2>Agenda</h2>
+            <hr>
+            <ol>
+                <li><button id="arrowButton" onclick="myFunction()"><i class="fas fa-chevron-right"></i></button>welcome
+                    <div id="myDIV">
+                         <p id="addNotes"><input class="add" type="text" value="Add notes"></p>
+                         <p id="addProjects"><input class="add" type="text" value="Add project"></p>
+                         <p id="addDecision"><input class="add" type="text" value="Add decision"></p>
+                    </div>
+                </li>
+                <li>Key Announcements</li>
+                <li>PMO Update</li>
+                <li>Project Portfolio Review</li>
+                <li>Past Action Items Review</li>
+            </ol>
+            <h2>Documents</h2>
+            <hr>
+            <i id="document" class="far fa-file-alt"></i>
+        </main>
+    </div>
+{% endblock %}

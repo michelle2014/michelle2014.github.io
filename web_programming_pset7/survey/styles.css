@@ -1,0 +1,78 @@
+/* line height of radio input */
+label
+{
+	margin-bottom: -2px;
+}
+
+/* expand space before house */
+.form-position
+{
+	margin-right: 7px;
+}
+
+/* space above button */
+button
+{
+	margin-top: 15px;
+}
+
+/* style of house input options */
+#house
+{
+	margin-left: 2px;
+	border: 1px solid lightgrey;
+	border-radius: 4px;
+	min-width: 120px;
+	min-height: 40px;
+	padding: 6px;
+	padding-left: 10px;
+	color: grey;
+	margin-top: 20px;
+}
+
+/* style of input name */
+#first-name, #second-name
+{
+	border: 1px solid lightgrey;
+	border-radius: 6px;
+	min-width: 200px;
+	min-height: 40px;
+	padding: 6px;
+	padding-left: 10px;
+	color: grey;
+}
+
+/* input style when focused */
+#name:focus, #house:focus
+{
+	border: 3px solid lightblue;
+	border-radius: 6px;
+}
+
+/* last name input space */
+.col-second
+{
+	margin-left: 10px;
+}
+
+/* first name input space*/
+.col-first
+{
+	margin-left: 16px;
+}
+
+/* alert message style */
+.alert-danger
+{
+	border: 1px solid pink;
+	padding: 20px 30px 20px 30px;
+	background-color: pink;
+	min-width: 90%;
+}
+
+/* heading style */
+h4
+{
+	font-size: 40px;
+	margin-bottom: 20px;
+}

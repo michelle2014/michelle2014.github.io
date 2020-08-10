@@ -1,0 +1,81 @@
+/* Fill viewport, hide scroll bar */
+html, body
+{
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Ensure content is below navbar */
+div.container-fluid
+{
+    padding-top: 56px;
+}
+
+/* Fill viewport */
+div.container-fluid, div.row, div.col, div.jumbotron
+{
+    height: 100%;
+}
+
+/* Remove padding within column */
+div.col
+{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Add padding around form */
+form
+{
+    padding: 15px;
+}
+
+/* Wrap and scroll preformatted text */
+pre
+{
+    height: 100%;
+    overflow: auto;
+    padding: 15px;
+    white-space: pre-wrap;
+}
+
+/* Highlight spans */
+span
+{
+    background-color: #ff0;
+}
+
+/* margin between compare options */
+input.compare-options
+{
+	margin-right: 7px;
+}
+
+/* reduce margin-left of length n */
+#length
+{
+	margin-left: 20px;
+	border: 1px solid lightgrey;
+	border-radius: 4px;
+	width: 165px;
+	height: 30px;
+	padding: 6px;
+	font-size: 14px;
+}
+
+/* style submit button */
+#compare-button
+{
+	background: dodgerblue;
+	color: white;
+	border-radius: 4px;
+	padding: 7px 13px 7px 13px;
+	border: dodgerblue;
+}
+
+label
+{
+	margin-bottom: -2px;
+}
+
+
