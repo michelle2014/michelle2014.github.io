@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+
+        <!-- Required meta tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--to use awesome icon-->
+        <script src="https://use.fontawesome.com/a0e34cff44.js"></script>
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <!-- seperated stylesheet -->
+        <link rel="stylesheet" href="styles.css">
+
+        <!--https://icons8.com/icons/set/google-->
+        <link href="icons8-google-128.ico" rel="icon">
+
+        <title>Google Images</title>
+    </head>
+    <body>
+        <!-- the form when submitted, will be taken to google webpage for image data response -->
+        <form action="https://google.com/search">
+            <header>
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- link back to Google Search -->
+                        <a id="index" href="index.html">Google Search</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="center">
+                <!-- google's logo -->
+                <img class="logo_center" src="googleimageslogo.png" alt="google logo"><br>
+                <i class="fa fa-search fa-search-image" aria-hidden="true"></i>
+                <!-- search icon-->
+                <input class="input_image" type="text" name="q">
+                <!-- camera icon-->
+                <i class="fa fa-camera" aria-hidden="true"></i>
+                <!-- microphone icon-->
+                <img src="32px-Google_mic.svg.png" alt="search by voice" class="microphone_image">
+                <!-- blue search icon-->
+                <i class="fa fa-search blue" aria-hidden="true"></i>
+                <!-- search input field-->
+                <input class="center" type="hidden" name="tbm" value="isch">
+            </div>
+        </form>
+
+        <!-- footer navigation bar-->
+        <footer id="footer_index_image">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <!-- indicating it's Google Australia-->
+                        <p>Australia</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <!-- left navigation links-->
+                        <a class="left-col" href="https://ads.google.com/intl/en_au/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1">Advertising</a>
+                        <a class="left-col" href="https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1#?modal_active=none">Business</a>
+                        <a class="left-col" href="https://about.google/?utm_source=google-AU&utm_medium=referral&utm_campaign=hp-footer&fg=1">About</a>
+                        <a class="left-col" href="https://www.google.com/search/howsearchworks/?fg=1">How Search Works</a>
+                    </div>
+
+                    <div class="col" id="right_image">
+                        <!-- right navigation links-->
+                        <a class="right-col" href="https://policies.google.com/privacy?hl=en-AU&fg=1">Privacy</a>
+                        <a class="right-col" href="https://policies.google.com/terms?hl=en-AU&fg=1">Terms</a>
+
+                        <ul class="nav-area right-col">
+                            <li><a href="">Settings</a>
+                                <ul>
+                                    <!-- drop down list menu-->
+                                    <li><a href="">Search Settings</a></li>
+                                    <li><a href="">Advanced Search</a></li>
+                                    <li><a href="">Your data in Search</a></li>
+                                    <li><a href="">History</a></li>
+                                    <li><a href="">Search Help</a></li>
+                                    <li><a href="">Send feedback</a></li>
+                                </ul>
+                                
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+    </body>
+</html>
