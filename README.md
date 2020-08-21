@@ -21,6 +21,6 @@ Here is the project list and languages as well as libraries and frameworks invol
 * Google Search (HTML, CSS)
 * Wiki (Python, Django, Bootstrap, Font Awesome)
 * Commerce (Python, Django) *to be finished*
-* Mail (HTML, CSS, JavaScript, Python, Django, API) *to be finished*
+* Mail (HTML, CSS, JavaScript, Python, Django, API)
 
 *To be continued...*
