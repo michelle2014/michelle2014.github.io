@@ -1,0 +1,37 @@
+textarea {
+    min-height: 400px;
+}
+
+/* div display of mailbox emails*/
+#emails-view > div {
+    border: 1px solid black;
+    padding: 5px 5px 5px 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+/* each line of email content bold before : */
+.bold_span {
+    font-weight: bolder;
+}
+
+/* Timestamp font color and align */
+#time_span {
+    color: grey;
+    text-align: right;
+}
+
+/* email content font size */
+span, p {
+    font-size: 1.2rem;
+}
+
+/* archive button right margin */
+#archive, #unarchive {
+    margin-right: 5px;
+}
+
+/* email content margin between each line */
+p {
+    margin-bottom: 0px;
+}
