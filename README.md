@@ -22,5 +22,6 @@ Here is the project list and languages as well as libraries and frameworks invol
 * Wiki (Python, Django, Bootstrap, Font Awesome)
 * Commerce (Python, Django) *to be finished*
 * Mail (HTML, CSS, JavaScript, Python, Django, API)
+* React Todo List (React, JavaScript, HTML, CSS)
 
 *To be continued...*
