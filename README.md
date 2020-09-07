@@ -22,7 +22,7 @@ Here is the project list and languages as well as libraries and frameworks invol
 * CS50W projects
   * Google Search (HTML, CSS)
   * Wiki (Python, Django, Bootstrap, Font Awesome)
-  * Commerce (Python, Django) *to be finished*
+  * Commerce (Python, Django)
   * Mail (HTML, CSS, JavaScript, Python, Django, API)
 * React projects
   * Todo List (React, HTML, CSS)

@@ -1,0 +1,101 @@
+{% extends "auctions/layout.html" %} {% block body %}
+
+<!-- small container for listings -->
+<div class="container-sm">
+
+    <!-- watchlist page displays -->
+
+    <h2>Watchlist</h2>
+    <hr />
+
+    <!-- all watchlist listings display  -->
+    {% for form in forms %}
+    <div class="row">
+
+        <!-- image of a listing -->
+        <div class="col-4">
+
+            <a href="{% url 'my_listing_view' form.title %}">
+                {% if form.image %}
+                <img src="{{ form.image.url }}" alt="" width="267px" />
+                {% elif form.image_url %}
+                <img src="{{ form.image_url }}" alt="" width="267px" />
+                {% endif %}
+            </a>
+
+
+        </div>
+
+        <!-- title of a listing -->
+        <div class="col-8">
+            <a href="{% url 'my_listing_view' form.title %}">
+                <p><strong>{{ form.title }}</strong></p>
+            </a>
+            {% if form.active %}
+            <p>
+                <!-- starting price -->
+                <span>Starting price: ${{ form.starting_price }}</span>
+
+                {% if form.current_price %}
+                <!-- if price is updated -->
+                <span class="current_price">Current price:
+                    ${{ form.current_price }}
+                </span>
+
+                {% else %}
+                <!-- if price is not updated, current price equals starting price -->
+                <span class="current_price">Current price:
+                    ${{ form.starting_price }}
+                </span>
+                {% endif %}
+            </p>
+            {% else %}
+            <!-- if listing is closed, display final price -->
+            <p id="final_price">Final price: ${{ form.current_price }}</p>
+            <p class="close_notice">Closed</p>
+            {% endif %}
+
+            <!-- description of a listing -->
+            <p>{{ form.description }}</p>
+
+            <!-- time a listing is created -->
+            <p class="timestamp">Created {{ form.timestamp }}</p>
+
+
+
+        </div>
+    </div>
+    <hr />
+    {% endfor %}
+
+    <style>
+        /* font color of the time a listing is created */
+        .timestamp {
+            color: grey;
+        }
+
+        /* list style is none */
+        ul {
+            list-style-type: none;
+        }
+
+        /* price area display */
+        .current_price {
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        /* final price is blue */
+        #final_price {
+            color: blue;
+        }
+
+        /* closed notice is red and bold */
+        .close_notice {
+            color: red;
+            font-weight: bold;
+            size: 1.2em;
+        }
+    </style>
+
+    {% endblock %}

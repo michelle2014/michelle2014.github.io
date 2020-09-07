@@ -1,0 +1,70 @@
+{% extends "auctions/layout.html" %} {% block body %}
+
+<!-- create form grid container -->
+<div class="grid-container">
+
+    <h4>Create your listing</h4>
+
+    <div>
+        <form action=" {% url 'create' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h5>Listing details</h5>
+
+            <!-- all fields of the form -->
+            {% for field in form %}
+            <div class="control-group">
+                <div class="row">
+
+                    <!-- if image upload field set it as optional -->
+                    {% if field.label == 'Image' %}
+                    <div class="col-2">
+                        <label class="control-label">{{ field.label }} (optional): </label>
+                    </div>
+                    <div class="col-10">
+                        <div class="controls">{{ field }}</div>
+                    </div>
+
+                    {% elif field.label == 'Image url' %}
+                    <div class="col-2">
+                        <label class="control-label">{{ field.label }} (optional): </label>
+                    </div>
+                    <div class="col-10">
+                        <div class="controls">{{ field }}</div>
+                    </div>
+
+                    <!-- if category selection field set it as optional -->
+                    {% elif field.label == 'Category' %}
+                    <div class="col-2">
+                        <label class="control-label">{{ field.label }} (optional): </label>
+                    </div>
+                    <div class="col-10">
+                        <div class="controls">{{ field }}</div>
+                    </div>
+
+                    <!-- if price input field add dollar sign -->
+                    {% elif field.label == 'Starting price' %}
+                    <div class="col-2">
+                        <label class="control-label">{{ field.label }} (AU$): </label>
+                    </div>
+                    <div class="col-10">
+                        <div class="controls">{{ field }}</div>
+                    </div>
+
+                    <!-- all the other fields -->
+                    {% else %}
+                    <div class="col-2">
+                        <label class="control-label">{{ field.label }}: </label>
+                    </div>
+                    <div class="col-10">
+                        <div class="controls">{{ field }}</div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <input class="btn btn-primary" type="submit" value="List item" />
+        </form>
+    </div>
+</div>
+{% endblock %}

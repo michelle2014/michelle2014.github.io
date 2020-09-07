@@ -1,0 +1,189 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<!-- small container for each listing page -->
+<div class="container-sm">
+    <div class="row">
+
+        <!-- image in the left of the container -->
+        <div class="col-4">
+            {% if listing.image %}
+            <img src="{{ listing.image.url }}" alt="" width="267px" />
+            {% elif listing.image_url %}
+            <img src="{{ listing.image_url }}" alt="" width="267px" />
+            {% endif %}
+        </div>
+
+        <!-- other details of the listing in the right of the container -->
+        <div class="col-8">
+
+            <!-- listing title -->
+            <p><strong>{{ listing.title }}</strong></p>
+
+            <!-- watchlist form -->
+
+            <form action="{% url 'my_listing_view' listing.title %}" method="post">
+                {% csrf_token %}
+
+                <!-- watchlist button change between add and remove -->
+                <button type="submit" name="watchlist" id="watchlist" class="btn btn-secondary">
+
+                    {% if value %}
+                    Remove from watchlist
+                    {% else %}
+                    Add to watchlist
+                    {% endif %}
+
+                </button>
+            </form>
+
+
+            <!-- if listing is active, display starting and current prices -->
+            {% if listing.active %}
+            <p>
+                <strong>
+                    Current price: ${{ listing.current_price }}
+                </strong>
+            </p>
+            <p>
+                Starting price: ${{ listing.starting_price }}
+            </p>
+            {% else %}
+
+            <!-- if listing is closed, display final price -->
+            <p id="final_price">Final price: ${{ listing.current_price }}</p>
+            <p class="close_notice">Closed</p>
+            {% endif %}
+
+            <!-- timestamp, description, seller and category respectively for a listing -->
+            <p>{{ listing.description }}</p>
+            <p class="timestamp">Created on {{ listing.timestamp }}</p>
+            <p>Seller: {{ listing.user }}</p>
+            <p>Category: {{ listing.category }}</p>
+
+            <!-- if a listing is active, display the place bid button -->
+            {% if listing.active %}
+            {{ listing.bid_count }} bid(s) so far.
+            <form action="" method="post">
+                {% csrf_token %}
+
+                {{ bid.bid_price }}
+                <input id="place_bid" type="submit" name="place_bid" value="Place bid" class="btn btn-primary">
+            </form>
+            {% endif %}
+
+            <!-- if a listing is active and it is a login user's listing, display the close button -->
+            {% if creator == user %}
+            {% if listing.active %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <input id="close" type="submit" name="close" class="btn btn-success" value="Close bid" />
+            </form>
+            {% endif %}
+            {% endif %}
+
+            <!-- if the winner of a listing signed in, the listing page should say so -->
+            {% if listing.winner == user.username %}
+            <p class="close_notice">You have won the auction!</p>
+            {% endif %}
+
+
+            <!-- if a comment or a bid is not valid, display the message -->
+            {% if message %}
+            <div class="alert alert-danger alert-dismissible"><a href="" class="close" data-dismiss="alert"
+                    aria-label="close">&times;</a>{{ message }}</div>
+            {% endif %}
+
+            <hr />
+            <h5>Comments</h5>
+
+            <!-- comments display area -->
+            {% for comment in comments %}
+            <div id="text">
+                <p id="user"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                    <span>{{ comment.user }}</span></p>
+                <p id="comment_at">Commented on {{ comment.comment_at }}</p>
+                <p>{{ comment.text }}</p>
+            </div>
+            {% endfor %}
+
+            <!-- comment form textarea -->
+            <form action="{% url 'my_listing_view' listing.title %}" method="post">
+                {% csrf_token %}
+                <div id="comment">
+                    <p><strong>
+                            Write your comment:
+                        </strong></p>
+                    {{ comment.text }}
+                </div>
+                <input id="comment_submit" name="comment" type="submit" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* watchlist button position */
+    #watchlist {
+        margin-bottom: 10px;
+    }
+
+    /* alert message position */
+    #comment,
+    #text,
+    .alert-danger {
+        margin-top: 40px;
+    }
+
+    /* comment button position */
+    #comment_submit {
+        float: right;
+    }
+
+    /* comment timestamp font color */
+    #comment_at,
+    .timestamp {
+        color: grey;
+    }
+
+    /* fontawe user logo size */
+    i {
+        width: 35px;
+    }
+
+    /* fontawe user logo position */
+    #user {
+        position: relative;
+    }
+
+    /* fontawe user logo position */
+    span {
+        position: absolute;
+        bottom: 20%;
+        left: 3em;
+    }
+
+    /* place bid button position */
+    #place_bid {
+        margin-left: 5px;
+    }
+
+    /* close button position */
+    #close {
+        margin-top: 20px;
+    }
+
+    /* final price is blue */
+    #final_price {
+        color: blue;
+    }
+
+    /* closed notice is red and bold */
+    .close_notice {
+        color: red;
+        font-weight: bold;
+        size: 1.2em;
+    }
+</style>
+
+{% endblock %}

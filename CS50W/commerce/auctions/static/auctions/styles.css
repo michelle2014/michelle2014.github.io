@@ -1,0 +1,30 @@
+/* create form grid container */
+.grid-container {
+  display: grid;
+  grid-gap: 15px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 100vw-20px;
+}
+
+/* create form grid display */
+.grid-container > div {
+  background-color: white;
+  text-align: left;
+  padding: 20px;
+  font-size: 17px;
+}
+
+/* textarea size and border */
+textarea {
+  height: 50vh;
+  width: 100%;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+}
+
+/* input area border */
+input {
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+}

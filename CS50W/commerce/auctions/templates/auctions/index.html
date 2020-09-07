@@ -1,0 +1,308 @@
+{% extends "auctions/layout.html" %} {% block body %}
+
+<!-- small container for listings -->
+<div class="container-sm">
+
+  <!-- if category page displays -->
+  {% if cate.title %}
+  <h2>Active Listings in {{ cate.title }}</h2>
+  <hr />
+
+  <!-- if all listings display -->
+  {% elif all_forms %}
+  <h2>All Listings in All Departments</h2>
+  <hr />
+
+  {% else %}
+  <h2>Active Listings</h2>
+  <hr />
+  {% endif %}
+
+  <!-- if listing successfully created -->
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible"><a href="" class="close" data-dismiss="alert"
+        aria-label="close">&times;</a>
+      <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    </div>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <!-- all active and closed listings display when a user is logged in -->
+  {% if all_forms %}
+
+
+
+  {% if user.username %}
+  {% for all_form in all_forms %}
+  <div class="row">
+
+    <!-- image of a listing -->
+    <div class="col-4">
+
+      <a href="{% url 'my_listing_view' all_form.title %}">
+        {% if all_form.image %}
+        <img src="{{ all_form.image.url }}" alt="" width="267px" />
+        {% elif all_form.image_url %}
+        <img src="{{ all_form.image_url }}" alt="" width="267px" />
+        {% endif %}
+      </a>
+
+
+    </div>
+
+    <!-- title of a listing -->
+    <div class="col-8">
+      <a href="{% url 'my_listing_view' all_form.title %}">
+        <p><strong>{{ all_form.title }}</strong></p>
+      </a>
+
+      {% if all_form.active %}
+      <p>
+
+        <!-- starting price -->
+        <span>Starting price: ${{ all_form.starting_price }}</span>
+
+        {% if all_form.current_price %}
+        <!-- if price is updated -->
+        <span class="current_price">Current price:
+          ${{ all_form.current_price }}
+        </span>
+
+        {% else %}
+        <!-- if price is not updated, current price equals starting price -->
+        <span class="current_price">Current price:
+          ${{ all_form.starting_price }}
+        </span>
+        {% endif %}
+      </p>
+      {% else %}
+      <!-- if listing is closed, display final price -->
+      <p id="final_price">Final price: ${{ all_form.current_price }}</p>
+      <p class="close_notice">Closed</p>
+      {% endif %}
+
+
+      <!-- description of a listing -->
+      <p>{{ all_form.description }}</p>
+
+      <!-- time a listing is created -->
+      <p class="timestamp">Created {{ all_form.timestamp }}</p>
+
+
+
+    </div>
+  </div>
+  <hr />
+  {% endfor %}
+
+
+
+
+
+
+  <!-- all active and closed listings display if no user logged in -->
+  {% else %}
+  {% for all_form in all_forms %}
+  <div class="row">
+
+    <!-- image of a listing -->
+    <div class="col-4">
+
+      <a href="{% url 'listing_view' all_form.title %}">
+        {% if all_form.image %}
+        <img src="{{ all_form.image.url }}" alt="" width="267px" />
+        {% elif all_form.image_url %}
+        <img src="{{ all_form.image_url }}" alt="" width="267px" />
+        {% endif %}
+      </a>
+    </div>
+
+    <!-- title of a listing -->
+    <div class="col-8">
+      <a href="{% url 'listing_view' all_form.title %}">
+        <p><strong>{{ all_form.title }}</strong></p>
+      </a>
+
+      <p>
+        <!-- starting price -->
+        <span>Starting price: ${{ all_form.starting_price }}</span>
+
+        {% if all_form.current_price %}
+        <!-- if price is updated -->
+        <span class="current_price">Current price:
+          ${{ all_form.current_price }}
+        </span>
+
+        {% else %}
+        <!-- if price is not updated, current price equals starting price -->
+        <span class="current_price">Current price:
+          ${{ all_form.starting_price }}
+        </span>
+        {% endif %}
+      </p>
+
+      <!-- description of a listing -->
+      <p>{{ all_form.description }}</p>
+
+      <!-- time a listing is created -->
+      <p class="timestamp">Created {{ all_form.timestamp }}</p>
+
+    </div>
+  </div>
+  <hr />
+  {% endfor %}
+  {% endif %}
+
+  {% else %}
+
+  <!-- all active listings display if a user logged in -->
+  {% if user.username %}
+  {% for form in forms %}
+  <div class="row">
+
+    <!-- image of a listing -->
+    <div class="col-4">
+
+      <a href="{% url 'my_listing_view' form.title %}">
+        {% if form.image %}
+        <img src="{{ form.image.url }}" alt="" width="267px" />
+        {% elif form.image_url %}
+        <img src="{{ form.image_url }}" alt="" width="267px" />
+        {% endif %}
+      </a>
+
+
+    </div>
+
+    <!-- title of a listing -->
+    <div class="col-8">
+      <a href="{% url 'my_listing_view' form.title %}">
+        <p><strong>{{ form.title }}</strong></p>
+      </a>
+
+      <p>
+        <!-- starting price -->
+        <span>Starting price: ${{ form.starting_price }}</span>
+
+        {% if form.current_price %}
+        <!-- if price is updated -->
+        <span class="current_price">Current price:
+          ${{ form.current_price }}
+        </span>
+
+        {% else %}
+        <!-- if price is not updated, current price equals starting price -->
+        <span class="current_price">Current price:
+          ${{ form.starting_price }}
+        </span>
+        {% endif %}
+      </p>
+
+      <!-- description of a listing -->
+      <p>{{ form.description }}</p>
+
+      <!-- time a listing is created -->
+      <p class="timestamp">Created {{ form.timestamp }}</p>
+
+
+
+    </div>
+  </div>
+  <hr />
+  {% endfor %}
+
+
+
+  <!-- all active listings display if no user logged in -->
+  {% else %}
+  {% for form in forms %}
+  <div class="row">
+
+    <!-- image of a listing -->
+    <div class="col-4">
+
+      <a href="{% url 'listing_view' form.title %}">
+        {% if form.image %}
+        <img src="{{ form.image.url }}" alt="" width="267px" />
+        {% elif form.image_url %}
+        <img src="{{ form.image_url }}" alt="" width="267px" />
+        {% endif %}
+      </a>
+    </div>
+
+    <!-- title of a listing -->
+    <div class="col-8">
+      <a href="{% url 'listing_view' form.title %}">
+        <p><strong>{{ form.title }}</strong></p>
+      </a>
+
+      <p>
+        <!-- starting price -->
+        <span>Starting price: ${{ form.starting_price }}</span>
+
+        {% if form.current_price %}
+        <!-- if price is updated -->
+        <span class="current_price">Current price:
+          ${{ form.current_price }}
+        </span>
+
+        {% else %}
+        <!-- if price is not updated, current price equals starting price -->
+        <span class="current_price">Current price:
+          ${{ form.starting_price }}
+        </span>
+        {% endif %}
+      </p>
+
+      <!-- description of a listing -->
+      <p>{{ form.description }}</p>
+
+      <!-- time a listing is created -->
+      <p class="timestamp">Created {{ form.timestamp }}</p>
+
+    </div>
+  </div>
+  <hr />
+  {% endfor %}
+  {% endif %}
+
+
+
+
+  {% endif %}
+
+
+  <style>
+    /* font color of the time a listing is created */
+    .timestamp {
+      color: grey;
+    }
+
+    /* list style is none */
+    ul {
+      list-style-type: none;
+    }
+
+    /* price area display */
+    .current_price {
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    /* final price is blue */
+    #final_price {
+      color: blue;
+    }
+
+    /* closed notice is red and bold */
+    .close_notice {
+      color: red;
+      font-weight: bold;
+      size: 1.2em;
+    }
+  </style>
+
+  {% endblock %}
