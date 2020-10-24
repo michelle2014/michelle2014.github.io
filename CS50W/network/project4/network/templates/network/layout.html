@@ -1,0 +1,230 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href="#">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Social Network{% endblock %}</title>
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.js"></script> -->
+
+    <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+    {% block script %}
+    <script src="{% static 'network/post.js' %}"></script>
+    {% endblock %}
+</head>
+
+<body class="main_container">
+    <!-- Left container navigation bar -->
+    <div class="row">
+        <div class="col-4">
+            <div id="left_container" class="row">
+                <div class="col-6">
+                </div>
+
+                <nav class="navbar-light" class="col-6">
+                    <p><i class="fab fa-battle-net"></i></p>
+                    <a href="{% url 'index' %}"><button id="home" class="inline_display button_margin"><i
+                                class="fas fa-home"></i>Home</button></a>
+                    <div>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="{% url 'index' %}"><button id="all_posts"
+                                        class="inline_display button_margin"><i class="fas fa-seedling"></i>
+                                        All
+                                        Posts</button></a>
+                            </li>
+                            {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a href="{% url 'following_index' %}"><button id="following"
+                                        class="inline_display button_margin"><i class="fas fa-hashtag"></i>
+                                        Following</button></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'user_profile' request.user %}"><button id="profile"
+                                        class="inline_display button_margin"><i class="far fa-user"></i>
+                                        Profile</button></a>
+                            </li>
+
+                            <!-- Popup post form -->
+                            <li class="nav-item">
+                                <input type="submit" value="Post" class="btn" onclick="popup()" id="new_post">
+                                <div id="popup_form">
+                                    <form action="{% url 'index' %}" method="post" id="popup_post_form">
+                                        {% csrf_token %}
+                                        <div class="row close_button">
+                                            <button type="button" class="btn cancel" onclick="close_form()"><i
+                                                    class="fa fa-times" aria-hidden="true"></i></button>
+                                        </div>
+                                        <div class="row popup">
+                                            <div class="col-1">
+                                                <i class=" fa fa-user-circle fa-3x" aria-hidden="true"></i>
+                                            </div>
+
+                                            <div class="col-10">
+                                                {{ post.content }}
+                                                <input type="submit" class="btn" value="Post" id="popup_new_post">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'register' %}">Register</a>
+                            </li>
+                            {% endif %}
+                            <!-- User name and logout part in the left corner -->
+                            {% if user.is_authenticated %}
+                            <div class="dropdown user_account">
+                                <button id="left_corner_user" class="btn btn-secondary dropdown-toggle inline_display"
+                                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                                    <span id="dropdown_user"><strong>@{{ request.user }}</strong>
+                                        <i class="fas fa-chevron-down fa-1x"></i></span>
+                                </button>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <p><i class="fa fa-user-circle fa-2x"
+                                            aria-hidden="true"></i><span>@{{ request.user }}
+                                        </span><i class="fas fa-check fa-1x"></i></p>
+                                    <hr />
+                                    <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                                </div>
+
+                            </div>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Middle and right containers for posts and who to follow divisions-->
+        <div id="middle_container" class="col-4">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        <div class="right_container col-4">
+            <div class="row upper">
+                <div class="who_to_follow_container">
+                    <div class="follow_border">
+                        <h5>What's happening</h5>
+                    </div>
+                    <!-- Display from the newest post -->
+                    {% for user in users %}
+                    <a class="follow_link" href="#">
+                        <div class="follow_options follow_border">
+                            <span class="follow_user">{{ user.username }}</span>
+                        </div>
+                    </a>
+
+                    {% endfor %}
+                    <div id="show_more">
+                        <a href="#">Show more</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="who_to_follow_container">
+                    <div class="follow_border">
+                        <h5>Who to follow</h5>
+                    </div>
+                    <!-- Iterate each user except the user logged in -->
+                    {% for user in users %}
+                    <a class="follow_link" href="#">
+                        <div class="follow_options follow_border">
+                            <i class=" fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                            <span class="follow_user">{{ user.username }}</span>
+                            <button id="follow_button" class="follow_user">Follow</button>
+                        </div>
+                    </a>
+
+                    {% endfor %}
+                    <div id="show_more">
+                        <a href="#">Show more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul id="pagination-demo" class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                {% endif %}
+                <div id="page">
+                    <input id="page_numbers" type="hidden" value="{{ page_obj.paginator.num_pages }}">
+                </div>
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" aria-disabled="true">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        <footer class="footer">
+            <div class="container">
+                <span class="text muted">Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2020 Network Inc.
+                    All
+                    Rights Reserverd.
+                </span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Popup form toggle -->
+    <script>
+        function popup() {
+            document.getElementById('popup_form').style.display = "block";
+        };
+
+        function close_form() {
+            document.getElementById('popup_form').style.display = "none";
+        };
+    </script>
+
+
+</body>
+
+</html>

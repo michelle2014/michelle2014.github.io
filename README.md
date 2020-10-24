@@ -22,8 +22,10 @@ Here is the project list and languages as well as libraries and frameworks invol
 * CS50W projects
   * Google Search (HTML, CSS)
   * Wiki (Python, Django, Bootstrap, Font Awesome)
-  * Commerce (Python, Django)
-  * Mail (HTML, CSS, JavaScript, Python, Django, API)
+  * Commerce (Python, Django, SQLite)
+  * Mail (HTML, CSS, JavaScript, Python, Django, API, SQLite)
+  * Network (HTML, CSS, JavaScript, Python, Django, API, Bootstrap, SQLite)
+  * CS50W Final project *to be finished*
 * React projects
   * Todo List (React, HTML, CSS)
   * Shopping Cart (React, HTML, CSS)

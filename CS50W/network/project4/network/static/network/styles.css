@@ -1,0 +1,523 @@
+/* Body width */
+body {
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", sans-serif;
+}
+
+/* Text alignment and position of navigation bar */
+nav {
+  text-align: left;
+  width: 50%;
+  margin-top: 10px;
+}
+
+#left_container {
+  margin-top: 10px;
+}
+
+/* Right container position */
+.right_container {
+  padding-left: 3em;
+  margin-top: 20px;
+}
+
+/* Upper and lower in right container */
+.upper {
+  margin-bottom: 20px;
+}
+
+/* Border middle container containing posts*/
+#middle_container,
+#post_middle_container,
+#profile_view {
+  border: 1px solid lightgrey;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Post container scroll bar hidden */
+.rows_container,
+#post_comment {
+  overflow-y: auto;
+}
+
+#profile_division {
+  padding-left: 2px;
+  padding-top: 10px;
+}
+
+.rows_container span {
+  float: right;
+  padding-right: 38%;
+  margin-top: -50px;
+}
+
+/* Like button */
+.rows_container button {
+  border: 0px;
+  background-color: white;
+}
+
+.rows_container a:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+/* Fontawesome icon size and color */
+i {
+  color: black;
+  font-size: 1.5em;
+  padding-right: 0.7em;
+}
+
+/* Link font color and size */
+.user_link {
+  color: black;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.post_edit {
+  padding-left: 15px;
+  font-weight: bold;
+  color: rgba(29, 161, 242, 1);
+}
+
+/* Hide and show of edit textarea */
+.edit_div {
+  display: none;
+}
+/* Fontawesome icon brand image size and color */
+.fab {
+  color: rgba(29, 161, 242, 1);
+  font-size: 2em;
+}
+
+/* New post button color and size */
+#new_post {
+  background-color: rgba(29, 161, 242, 1);
+  color: white;
+  border: 1px solid rgba(29, 161, 242, 1);
+  border-radius: 30px;
+  width: 15em;
+  height: 3em;
+  font-weight: bold;
+  outline: none;
+}
+
+/* User account fixed at the left bottom */
+.user_account {
+  position: fixed;
+  bottom: 30px;
+}
+
+.user_loggout {
+  bottom: 0px;
+}
+
+/* Fontawesome icon inline display and button color and border */
+.inline_display {
+  display: inline-block;
+  background-color: white;
+  border: 0px solid #e1f3fd;
+  height: 2.5em;
+}
+
+/* Five buttons hover over and focus background color and size */
+.inline_display:hover,
+.inline_display:focus {
+  border: 0px;
+  height: 2.5em;
+  background-color: #e1f3fd;
+  border-radius: 30px;
+  outline: none;
+}
+
+/* Top four links and icons hover over color */
+.inline_display.button_margin:hover > i,
+.inline_display.button_margin:hover > a {
+  color: rgba(29, 161, 242, 1);
+}
+
+/* Link hover without underline */
+a:hover {
+  text-decoration: none;
+}
+
+/* Button position */
+.button_margin {
+  margin-bottom: 2.5em;
+}
+
+/* User icon color is grey */
+.fa-user-circle {
+  color: grey;
+}
+
+/* Hide the caret icon */
+.dropdown-toggle::after {
+  display: none;
+}
+
+/* Dropdown username and angle down color and position */
+#dropdown_user {
+  color: black;
+}
+
+strong {
+  vertical-align: super;
+  margin-right: 5em;
+}
+
+.fa-chevron-down {
+  vertical-align: super;
+}
+
+/* Dropdown menu size, border and position */
+.dropdown-menu {
+  border-radius: 15px;
+  width: 20em;
+  margin-left: -2em;
+}
+
+.dropdown-menu .fa-user-circle {
+  margin-left: 1em;
+  vertical-align: text-top;
+}
+
+.dropdown-menu span {
+  vertical-align: bottom;
+}
+
+/* User logged in blue tick */
+.fa-check {
+  vertical-align: -40%;
+  color: rgba(29, 161, 242, 1);
+  margin-left: 9em;
+}
+
+/* Login and register position */
+.user_login {
+  margin-top: 1%;
+}
+
+#left_corner_user:focus {
+  background-color: white;
+}
+
+/* Down below is who to follow part */
+.follow_options {
+  font-weight: bold;
+  padding-left: 1em;
+}
+
+/* Who to follow title */
+h5 {
+  font-weight: bold;
+  padding-left: 1em;
+  line-height: 2em;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* Post in details */
+
+.detailed_content {
+  margin-top: 40px;
+  margin-left: -50px;
+}
+
+.fa-heart {
+  margin-left: 15px;
+}
+
+/* Background color, border and width of who to follow container on the right */
+.who_to_follow_container {
+  background-color: rgb(245, 248, 250);
+  border-radius: 20px;
+  width: 60%;
+  display: table;
+}
+
+.follow_link {
+  background-color: rgb(245, 248, 250);
+  width: 100%;
+  display: table;
+}
+
+.follow_user {
+  vertical-align: 40%;
+}
+
+#follow_button,
+.profile_follow_button {
+  margin-left: 9em;
+  background-color: rgb(245, 248, 250);
+  border: 1px solid rgba(29, 161, 242, 1);
+  border-radius: 30px;
+  color: rgba(29, 161, 242, 1);
+  font-weight: bold;
+  width: 5em;
+  font-size: 0.9em;
+}
+
+.profile_follow_button {
+  float: right;
+}
+
+#follow_button:hover,
+.profile_follow_button:hover {
+  background-color: #ebf6f9;
+}
+
+#follow_button:focus,
+.profile_follow_button:focus {
+  background-color: rgba(29, 161, 242, 1);
+  color: white;
+  outline: none;
+}
+
+#follow_link:hover {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.follow_border {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+#show_more {
+  margin-left: 1em;
+  font-size: 0.9em;
+}
+
+#show_more a {
+  color: rgba(29, 161, 242, 1);
+}
+
+.follow_border,
+#show_more {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* Down below is middle container */
+.middle_cell {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+#upper_new_post,
+#popup_new_post {
+  background-color: rgba(29, 161, 242, 1);
+  color: white;
+  border: 1px solid rgba(29, 161, 242, 1);
+  border-radius: 30px;
+  width: 7em;
+  height: 2.5em;
+  font-weight: bold;
+  margin-bottom: 0.8em;
+  margin-top: 0em;
+  float: right;
+  margin-right: 2em;
+}
+
+#popup_new_post {
+  margin-right: -1em;
+}
+
+#popup_new_post {
+  margin-top: 0.5em;
+}
+
+.middle_cell h5 {
+  margin-top: 12px;
+}
+
+.middle_cell span {
+  font-size: 1.2em;
+  color: grey;
+}
+
+.middle_cell .row {
+  margin-top: 1em;
+  margin-left: 0.4em;
+}
+
+#happening_form {
+  border-bottom: 8px solid #e6e6e6;
+}
+
+/* Textarea has no border */
+textarea {
+  border: 0;
+}
+
+textarea:focus {
+  border: 0;
+  outline: none;
+}
+
+/* Popup form - hidden by default */
+#popup_form {
+  display: none;
+  position: fixed;
+  top: 5%;
+  right: 30%;
+  border-radius: 15px;
+  border: 1px solid #e6e6e6;
+  z-index: 9;
+  width: 34%;
+  height: 25%;
+  background-color: white;
+}
+
+#popup_form textarea {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+#popup_form .close_button {
+  border-bottom: 1px solid #e6e6e6;
+  width: 99.5%;
+  margin-left: 0.5%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#popup_form .popup {
+  margin-top: 20px;
+}
+
+.cancel > i {
+  color: rgba(29, 161, 242, 1);
+  margin-left: 15px;
+}
+
+.popup i,
+.popup .col-10 {
+  margin-left: 15px;
+}
+
+/* Textarea size */
+textarea {
+  width: 520px;
+  height: 100px;
+}
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7px;
+}
+
+/* Like part of detailed post */
+#like,
+#profile_details {
+  padding-top: 15px;
+}
+
+#detailed_timestamp,
+#profile_timestamp {
+  color: grey;
+}
+
+#post_id,
+#profile_details {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#post_middle_container span,
+#profile_view span {
+  color: black;
+  vertical-align: 10%;
+}
+
+#detailed_post_element span {
+  color: black;
+  vertical-align: -40%;
+  margin-left: 10px;
+}
+
+.rows_container i,
+.rows_container p {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+/* Pagination button position*/
+.pagination {
+  position: fixed;
+  bottom: 1.2%;
+  right: 33.4%;
+}
+
+.paginationjs {
+  position: fixed;
+  top: 25%;
+  right: 33.4%;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+/* Dynamic page number inline display */
+#page li {
+  display: inline-block;
+}
+
+/* Follow style */
+#profile_view .follow {
+  color: grey;
+  font-size: 1em;
+}
+
+#profile_details .user_link {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#profile a {
+  color: black;
+}
+
+/* Edit display */
+.edit_button {
+  float: right;
+  margin-right: 40px;
+  color: rgba(29, 161, 242, 1);
+  font-weight: bold;
+}
+
+.edit_textarea {
+  margin-left: 50px;
+  padding-top: 15px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.heart_input {
+  border: none;
+  background-color: white;
+  font-size: 2em;
+  color: grey;
+  margin-left: 0.3em;
+}
+
+/* Like count number */
+.like_count {
+  display: inline;
+  vertical-align: 10%;
+}
+
+.like_button:focus {
+  outline: none;
+}

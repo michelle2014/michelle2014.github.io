@@ -1,0 +1,82 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div id="profile_view">
+    <!-- Back to home page arrow -->
+    <div class="row middle_cell">
+        <a href="{% url 'index' %}">
+            <h5><i class="fas fa-long-arrow-alt-left"></i><span>Home</span></h5>
+        </a>
+    </div>
+    <!-- User profile -->
+    <div id="profile_details" class="middle_cell">
+        <div id="profile_division">
+            <i class=" fa fa-user-circle fa-3x" aria-hidden="true"></i>
+            {% if user != request.user %}
+            <form method="post" action="{% url 'user_profile' user.username %}">
+                {% csrf_token %}
+                <button type="submit" id="follow_button" name="follow" class="profile_follow_button follow_user">
+
+                    {% if user in e_followings %}
+                    Unfollow
+                    {% else %}
+                    Follow
+                    {% endif %}
+                </button>
+            </form>
+            {% endif %}
+            <p class="user_link">@{{ user.username }}</p>
+            <p>
+                <span>{{ followings_count }}</span>
+                <span class="follow">Following</span>
+                <span>{{ followers_count }}</span>
+                <span class="follow">Followers</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Post info -->
+<div class="rows_container">
+    {% for post in page_obj %}
+    <div><i class=" fa fa-user-circle fa-3x" aria-hidden="true"></i></div>
+    <div>
+        <span>@
+            <a id="other_profile{{ post.id }}" class="user_link" href="{% url 'user_profile' post.user %}">
+                {{ post.user }}
+            </a>
+            - posted on
+            {{ post.timestamp }}
+        </span>
+        <p id="post_paragraph{{ post.id }}">{{ post.content }}</p>
+        {% if post.user == request.user %}
+        <button class="post_edit" onClick="edit('{{ post.id }}')" id="post_button{{ post.id }}"><input
+                id="input_id{{ post.id }}" type="hidden" value="{{ post.id }}">Edit</button>
+        {% endif %}
+        <div class="edit_div" id="edit_textarea{{ post.id }}">
+            <form class="edit_like" id="edit_form{{ post.id }}" method="put">
+                {% csrf_token %}
+                <textarea id="edit_text{{ post.id }}" class="edit_textarea">{{ post.content }}</textarea><br />
+                <button id="edit_button{{ post.id }}" class="edit_button" type=submit>Save</button>
+            </form>
+        </div>
+        <div class="like_div">
+            <form class="edit_like like_form" method="post">
+                {% csrf_token %}
+                <button class="like_button" id="like_button{{ post.id }}"
+                    onClick="like('{{ post.id }}', '{{ request.user.id }}')" type="submit" name="place_like">
+                    <i class="far fa-heart" aria-hidden></i>
+                </button>
+                <p id="count{{ post.id }}" class="like_count">{{ post.like_count }}</p>
+            </form>
+        </div>
+        <hr />
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'network/post.js' %}"></script>
+{% endblock %}
